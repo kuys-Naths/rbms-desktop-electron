@@ -1,8 +1,9 @@
+
 {
   "name": "rbms-electronjs",
   "productName": "rbms-electronjs",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "RBMS Desktop Application",
   "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -44,6 +45,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sweetalert2": "^11.14.1",
-    "toastify-js": "^1.12.0"
+    "toastify-js": "^1.12.0",
+    "update-electron-app": "^3.0.0"
   }
 }

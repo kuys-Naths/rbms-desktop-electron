@@ -3,7 +3,15 @@ const path = require('node:path');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
 require('./backend/server');
-
+const { updateElectronApp, UpdateSourceType } = require('update-electron-app')
+updateElectronApp({
+  updateSource: {
+    type: UpdateSourceType.ElectronPublicUpdateService,
+    repo: 'kuys-Naths/rbms-desktop-electron'
+  },
+  updateInterval: '1 hour',
+  logger: require('electron-log')
+})
 // require('electron-reloader')(module);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
