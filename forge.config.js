@@ -8,7 +8,7 @@ module.exports = {
       config: {
         repository: {
           owner: 'kuys-Naths',
-          name: 'rbms-electron'
+          name: 'rbms-desktop-electron'
         },
         prerelease: false,
         draft: true
