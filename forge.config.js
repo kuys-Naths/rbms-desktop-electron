@@ -2,19 +2,6 @@ const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
 module.exports = {
-  publishers: [
-    {
-      name: '@electron-forge/publisher-github',
-      config: {
-        repository: {
-          owner: 'kuys-Naths',
-          name: 'rbms-desktop-electron'
-        },
-        prerelease: false,
-        draft: true
-      }
-    }
-  ],
   packagerConfig: {
     asar: true,
   },
@@ -54,4 +41,17 @@ module.exports = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'kuys-Naths',
+          name: 'rbms-desktop-electron'
+        },
+        prerelease: true,
+        draft: true
+      }
+    }
+  ]
 };
