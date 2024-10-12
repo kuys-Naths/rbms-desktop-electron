@@ -1,0 +1,195 @@
+@import './assets/bootstrap/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400..700&display=swap');
+
+* {
+  font-family: 'Monda', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  overflow: hidden;
+  padding: 10px
+
+}
+body {
+  background-color: #D6D6CA;
+}
+.Contents{
+  height: 97dvh;
+}
+.Content-Page {
+  margin-left: 250px;
+  height: 97dvh;
+  padding: 0 10px 10px 10px;
+}
+
+/* Navbar/SideNav */
+.navbar {
+  position: fixed;
+  display: block;
+  width: 250px;
+  height: 97dvh;
+  border-radius: 12px;
+  background-image: linear-gradient(
+      0deg,
+      hsl(155deg 17% 45%) 0%,
+      hsl(151deg 18% 42%) 20%,
+      hsl(147deg 19% 39%) 40%,
+      hsl(142deg 21% 36%) 60%,
+      hsl(136deg 24% 33%) 80%,
+      hsl(129deg 28% 29%) 100%
+  );
+}
+
+.Logo {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  #logo {
+      display: block;
+      margin: auto;
+      width: 100px;
+      height: 100px;
+  }
+}
+
+.nav {
+  margin-left: 40px;
+}
+.nav .nav-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.nav .nav-item .nav-link {
+  /* background-color: #355E3B; */
+  border-radius: 12px 0 0 12px;
+  padding-left: 20px;
+  transition: padding-left 0.5s ease-in-out;
+  color: white;
+}
+.nav .nav-item .nav-link.active {
+  background-color: #355E3B;
+  border-radius: 12px 0 0 12px;
+  padding-left: 40px;
+  transition: padding-left 0.1s ease-in-out;
+  color: white;
+}
+.nav .nav-item .nav-link:hover {
+  background-color: #355E3B;
+  border-radius: 12px 0 0 12px;
+  padding-left: 40px;
+  transition: padding-left 0.1s ease-in-out;
+  color: white;
+}
+
+
+/* SECTIONS */
+section{
+  width: 100%;
+  height: 100vh;
+  padding-top: 60px;
+}
+/* HOME */
+#HomePage #home-title-page #htp {
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.top-cards{
+  margin-bottom: 10px;
+}
+
+.top-cards .card {
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+}
+.top-cards .greet-card, .top-cards .calendar-card {
+  height: 200px;
+}
+.card-image {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 120px; /* adjust the width and height as needed */
+  height: 140px;
+  object-fit: cover;
+}
+.top-cards .card .card-body .greet {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.top-cards .card .card-body .card-text {
+  font-size: 12px;
+  width: 300px;
+}
+
+.bottom-cards{
+  padding-top: 10px;
+}
+.bottom-cards .card {
+  height: 150px;
+  margin: 0;
+}
+.bottom-cards .card .card-body .revIcon {
+  height: 75px;
+  width: 100px; 
+}
+.bottom-cards .card .card-body .accIcon {
+  height: 75px;
+  width: 100px; 
+}
+.bottom-cards .card .card-body .mapIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  height: 150px;
+  width: 205px
+}
+.bottom-cards .card .card-body .gpsTText {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  display: block;
+  bottom: 25px;
+  left: 0;
+}
+.bottom-cards .card .card-body .bikeIcon {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  height: 75px;
+  width: 100px; 
+}
+
+.bottom-cards .card {
+  transform: translateY(0);
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+  transition: transform .2s ease-in, box-shadow .2s ease-in;
+  
+}
+.bottom-cards .revCard:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0px 30px 35px 10px rgba(0,0,0,0.1);
+}
+.bottom-cards .accCard:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0px 30px 35px 10px rgba(0,0,0,0.1);
+}
+.bottom-cards .mapCard:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0px 30px 35px 10px rgba(0,0,0,0.1);
+}
+.bottom-cards .bikeCard:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0px 30px 35px 10px rgba(0,0,0,0.1);
+}

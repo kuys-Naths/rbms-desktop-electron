@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="../node_modules/toastify-js/src/toastify.css" />
+        <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/js/jquery-3.7.1.min.js"></script>
+        <link rel="stylesheet" href="../node_modules/animate.css/animate.min.css" />
+        <link rel="stylesheet" href="../node_modules/aos/dist/aos.css">
+        <script src="../node_modules/aos/dist/aos.js"></script>
+        <!-- components -->
+        <link rel="stylesheet" href="./components/HeaderNav/HeaderNav.css" />
+    </head>
+    <body>
+        <div class="NavContainer">
+            <div class="navbar animate__animated animate__zoomIn">
+                <div class="Logo">
+                  <img class="animate__animated animate__lightSpeedInLeft" src="./assets/images/navbar/logo.svg" alt="RBMS" id="logo">
+                </div>
+                <div class="links">
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="Home" href="#HomePage">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="statistics" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
+                        >Statistics</a
+                      >
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" id="Revenue" href="#RevenuePage">Revenue</a></li>
+                        <li><a class="dropdown-item" id="Reservations" href="#ReservationsPage">Reservations</a></li>
+                        <li><a class="dropdown-item" id="WalkIn" href="#WalkInPage">Walk-In</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="GPSTracking" href="#GPSTrackingPage">GPS Tracking</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="BikeAvailability" href="#BikeAvailabilityPage">Bike Availability</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="BikeUpload" href="#BikeUploadPage">Bike Upload</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="Accounts" href="#AccountsPage">Accounts</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+        <div class="Contents">
+            <div class="HeaderNavContainer"></div>
+            <div class="Content-Page">
+                <section id="HomePage">
+                    <div class="animate__animated animate__zoomInUp animate__delay-1s">
+                        <div class="row">
+                            <div id="home-title-page">
+                                <p id="htp">Dashboard</p>
+                            </div>
+                        </div>
+                        <div class="row top-cards">
+                            <div class="col-7">
+                                <div class="card rounded-4 greet-card">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="card-body">
+                                                <p class="greet">Hi, <span id="username">Username</span></p>
+                                                <p class="card-text">
+                                                    Get ready to explore powerful tools! Effortlessly track real-time
+                                                    bike availability, monitor GPS routes, and view detailed stats.
+                                                    Customize the dashboard and stay on top of everything with ease.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <img
+                                                class="float-end card-image mt-3"
+                                                src="./assets/images/person.png"
+                                                alt="person"
+                                                height="150"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="card rounded-4 calendar-card">
+                                    <div class="card-body">
+                                        <div id="calendar-container"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row bottom-cards">
+                            <div class="col-3">
+                                <div class="card revCard rounded-4 ">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <img class="revIcon m-auto mb-2" src="./assets/images/home/revIcon.png" alt="revIcon" />
+                                        </div>
+                                        <div class="row">
+                                            <p class="desc text-center">&#8369;&nbsp;500,000.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card accCard rounded-4 ">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <img class="accIcon m-auto mb-2" src="./assets/images/home/accIcon.png" alt="revIcon" />
+                                        </div>
+                                        <div class="row">
+                                            <p class="desc text-center text-nowrap">1,114 Accounts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card mapCard rounded-4 ">
+                                    <div class="card-body p-0">
+                                        <div class="row">
+                                            <img class="mapIcon" src="./assets/images/home/mapIcon.png" alt="revIcon" />
+                                        </div>
+                                        <div class="row">
+                                            <p class="desc text-center text-nowrap gpsTText">GPS Tracking</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card bikeCard rounded-4 ">
+                                    <div class="card-body p-0">
+                                        <div class="row">
+                                            <img class="bikeIcon" src="./assets/images/home/bikeIcon.png" alt="revIcon" />
+                                        </div>
+                                        <div class="row">
+                                            <p class="desc text-center text-nowrap gpsTText">5 bikes available</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="RevenuePage">
+                    this is Revenue
+                </section>
+                <section id="ReservationsPage">
+                    this is Reservations
+                </section>
+                <section id="WalkInPage">
+                    this is Walk-In
+                </section>
+                <section id="GPSTrackingPage">
+                    this is GPS-Tracking
+                </section>
+                <section id="BikeAvailabilityPage">
+                    this is Bike Availability
+                </section>
+                <section id="BikeUploadPage">
+                    this is Bike-Upload
+                </section>
+                <section id="AccountsPage">
+                    this is Accounts
+                </section>
+            </div>
+        </div>
+        <!-- scripts -->
+        <script>
+            AOS.init();
+        </script>
+        <script src="../node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+        <script src="../node_modules//toastify-js/src/toastify.js"></script>
+        <script src="./index.js"></script>
+        <script src="./renderer.js"></script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+.headerNav {
+    position: fixed;
+    width: 72.5%;
+    margin-left: 260px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #355E3B;
+    padding: 0 20px;
+    border-radius: 12px;
+    z-index: 9999999;
+}
+.companyName {
+    font-size: 33px;
+    font-weight: bold;
+    color: white;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 25px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 4px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    transform: translateX(-20px);
+    opacity: 0;
+    
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
