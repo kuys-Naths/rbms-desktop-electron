@@ -1,10 +1,10 @@
-const { app, BrowserWindow, ipcMain, session } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
 require('./backend/server');
 
-require('electron-reloader')(module);
+// require('electron-reloader')(module);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
