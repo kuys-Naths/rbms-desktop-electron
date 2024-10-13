@@ -3,16 +3,12 @@ const path = require('node:path');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
 require('./backend/server');
-const { updateElectronApp, UpdateSourceType } = require('update-electron-app')
-updateElectronApp({
-  updateSource: {
-    type: UpdateSourceType.ElectronPublicUpdateService,
-    repo: 'kuys-Naths/rbms-desktop-electron'
-  },
-  updateInterval: '1 hour',
-  logger: require('electron-log')
-})
-// require('electron-reloader')(module);
+require('dotenv').config();
+const { updateElectronApp } = require('update-electron-app')
+updateElectronApp();
+
+const PORT = process.env.PORT;
+require('electron-reloader')(module);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -70,7 +66,7 @@ app.on('window-all-closed', () => {
 // code. You can also put them in separate files and import them here.
 ipcMain.handle('login-data', async (event, data) => {
   try {
-    const existingAccountResponse = await axios.post('http://localhost:5000/findUser', data);
+    const existingAccountResponse = await axios.post(`http://localhost:${PORT}/findUser`, data);
     if (existingAccountResponse.data.exists) {
       event.sender.send('account-found', {
         success: true,
@@ -92,7 +88,7 @@ ipcMain.handle('login-data', async (event, data) => {
 ipcMain.handle('submit-data', async (event, data) => {
   try {
     // Check if account exists before creating a new one
-    const existingAccountResponse = await axios.post('http://localhost:5000/findUser', data);
+    const existingAccountResponse = await axios.post(`http://localhost:${PORT}/findUser`, data);
     if (existingAccountResponse.data.exists) {
       event.sender.send('submit-data-response', {
         success: false,
@@ -103,7 +99,7 @@ ipcMain.handle('submit-data', async (event, data) => {
 
     
     // Create a new account if it doesn't exist
-    const createAccountResponse = await axios.post('http://localhost:5000/createUser', data);
+    const createAccountResponse = await axios.post(`http://localhost:${PORT}/createUser`, data);
     
     event.sender.send('submit-data-response', {
       success: true,
@@ -121,12 +117,12 @@ ipcMain.handle('submit-data', async (event, data) => {
 ipcMain.handle('send-email', (event, emailTo, sendOTP, emailHTML) => {
   // Create a transporter object
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
+    host: process.env.emailHost,
+    port: process.env.emailPort,
     secure: false,
     auth: {
-      user: 'rbms.labanos2024@gmail.com',
-      pass: 'gmuwmhckmxdnyaho',
+      user: process.env.emailUser,
+      pass: process.env.emailPass,
     },
   });
 

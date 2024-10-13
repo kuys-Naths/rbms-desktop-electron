@@ -7,7 +7,6 @@ let userLogin;
 let userPass;
 let isLoggedIn = localStorage.getItem('isLoggedIn');
 
-
 document.addEventListener('DOMContentLoaded', function (arg) {
     checkSession();
 });
@@ -17,8 +16,8 @@ function checkSession() {
         console.log(isLoggedIn);
         Login();
     } else {
-      localStorage.setItem('isLoggedIn', 'true');
-      document.getElementById('username').innerText = localStorage.getItem('sessionUser');
+        localStorage.setItem('isLoggedIn', 'true');
+        document.getElementById('username').innerText = localStorage.getItem('sessionUser');
     }
 }
 
@@ -35,23 +34,40 @@ function Login() {
           <div class="input-group mb-3">
               <span class="input-group-text" style="width: 100px;">Password</span>
               <input id="pass" type="password" aria-label="Password" class="form-control">
+              <button id="show-pass" class="btn btn-outline-secondary" type="button">
+                <i class="fa fa-eye"></i>
+              </button>
           </div>
           <a href="javascript:showNewModal()">click here to create account</a>
       
         `,
         showClass: {
-          popup: `
+            popup: `
             animate__animated
             animate__fadeInDownBig
             animate__faster
-          `
+          `,
         },
         hideClass: {
-          popup: `
+            popup: `
             animate__animated
             animate__fadeOutDownBig
             animate__faster
-          `
+          `,
+        },
+        didOpen: () => {
+            const showPassButton = document.getElementById('show-pass');
+            const passwordInput = document.getElementById('pass');
+
+            showPassButton.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    showPassButton.innerHTML = '<i class="fa fa-eye-slash"></i>';
+                } else {
+                    passwordInput.type = 'password';
+                    showPassButton.innerHTML = '<i class="fa fa-eye"></i>';
+                }
+            });
         },
         focusConfirm: false,
         allowOutsideClick: false,
@@ -87,13 +103,15 @@ function Login() {
                             toast.addEventListener('mouseenter', Swal.stopTimer);
                             toast.addEventListener('mouseleave', Swal.resumeTimer);
                         },
+                        didClose: () => {
+                            localStorage.setItem('isLoggedIn', 'true');
+                            localStorage.setItem('sessionUser', userLogin);
+                            document.getElementById('username').innerText = localStorage.getItem('sessionUser');
+                            location.reload();
+                        },
                         icon: 'success',
                         title: response.message,
                     });
-                    localStorage.setItem('isLoggedIn', 'true');
-                    localStorage.setItem('sessionUser', userLogin);
-                    document.getElementById('username').innerText = localStorage.getItem('sessionUser');
-                    
                 } else {
                     Swal.fire({
                         toast: true,
@@ -122,21 +140,28 @@ function showNewModal() {
     Swal.fire({
         title: 'Create Account',
         icon: 'info',
+        width: 0.6 * window.innerWidth,
         html: `
         <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 100px;">Username</span>
+            <span class="input-group-text" style="width: 155px;">Username</span>
             <input id="uname" type="text" aria-label="Username" class="form-control">
         </div>
         <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 100px;">Password</span>
+            <span class="input-group-text" style="width: 155px;">Password</span>
             <input id="pass" type="password" aria-label="Password" class="form-control">
+            <button id="show-pass" class="btn btn-outline-secondary" type="button">
+                <i class="fa fa-eye"></i>
+              </button>
         </div>
         <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 100px;">Confirm Password</span>
+            <span class="input-group-text" style="width: 155px;">Confirm Password</span>
             <input id="cpass" type="password" aria-label="Confirm Password" class="form-control">
+            <button id="c-show-pass" class="btn btn-outline-secondary" type="button">
+                <i class="fa fa-eye"></i>
+              </button>
         </div>
         <div class="input-group mb-3">
-            <span class="input-group-text" style="width: 100px;">Email</span>
+            <span class="input-group-text" style="width: 155px;">Email</span>
             <input id="email" type="email" aria-label="Email" class="form-control">
         </div>
         <div class="input-group mb-3">
@@ -144,6 +169,31 @@ function showNewModal() {
             <a href="javascript:getOTP()" class="btn btn-dark">Get OTP</a>
         </div>
         `,
+        didOpen: () => {
+            const showPassButton = document.getElementById('show-pass');
+            const passwordInput = document.getElementById('pass');
+            const showCPassButton = document.getElementById('c-show-pass');
+            const cpasswordInput = document.getElementById('cpass');
+
+            showPassButton.addEventListener('click', () => {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    showPassButton.innerHTML = '<i class="fa fa-eye-slash"></i>';
+                } else {
+                    passwordInput.type = 'password';
+                    showPassButton.innerHTML = '<i class="fa fa-eye"></i>';
+                }
+            });
+            showCPassButton.addEventListener('click', () => {
+                if (cpasswordInput.type === 'password') {
+                    cpasswordInput.type = 'text';
+                    showCPassButton.innerHTML = '<i class="fa fa-eye-slash"></i>';
+                } else {
+                    cpasswordInput.type = 'password';
+                    showCPassButton.innerHTML = '<i class="fa fa-eye"></i>';
+                }
+            });
+        },
         showConfirmButton: true,
         confirmButtonText: 'Submit',
         showDenyButton: true,
@@ -152,18 +202,18 @@ function showNewModal() {
         allowOutsideClick: false,
         allowEscapeKey: false,
         showClass: {
-          popup: `
+            popup: `
             animate__animated
             animate__fadeInDownBig
             animate__faster
-          `
+          `,
         },
         hideClass: {
-          popup: `
+            popup: `
             animate__animated
             animate__fadeOutDownBig
             animate__faster
-          `
+          `,
         },
         preConfirm: () => {
             const modalCon = Swal.getHtmlContainer();
@@ -177,7 +227,7 @@ function showNewModal() {
                 Swal.showValidationMessage('Please fill out all fields');
                 return false;
             }
-            if(pass.value === cpass.value){
+            if (pass.value !== cpass.value) {
                 Swal.showValidationMessage(`Passwords does'nt match`);
                 return false;
             }
@@ -195,11 +245,7 @@ function showNewModal() {
                 return false;
             }
 
-            return [
-              (S_Username = uname.value), 
-              (S_Password = pass.value), 
-              (S_Email = email.value)
-            ];
+            return [(S_Username = uname.value), (S_Password = pass.value), (S_Email = email.value)];
         },
     }).then((result) => {
         if (result.isDenied) {
@@ -296,30 +342,33 @@ function getOTP() {
     `;
 
     if (emailTo === '') {
-        Swal.fire({
-            icon: 'info',
-            text: `Please enter email`,
-            toast: true,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer);
-                toast.addEventListener('mouseleave', Swal.resumeTimer);
-            },
-            position: 'top-end',
-            confirmButtonText: 'OKAY',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-        });
-        // Toastify({
-        //     text: 'Please Enter Email',
-        //     duration: 3000,
-        //     newWindow: true,
-        //     close: true,
-        //     gravity: 'top', // `top` or `bottom`
-        //     position: 'left', // `left`, `center` or `right`
-        //     stopOnFocus: true, // Prevents dismissing of toast on hover
-        // }).showToast();
+        // Swal.fire({
+        //     icon: 'info',
+        //     text: `Please enter email`,
+        //     toast: true,
+        //     timer: 2000,
+        //     timerProgressBar: true,
+        //     showConfirmButton: false,
+        //     didOpen: (toast) => {
+        //         toast.addEventListener('mouseenter', Swal.stopTimer);
+        //         toast.addEventListener('mouseleave', Swal.resumeTimer);
+        //     },
+        //     didClose: () => {
+        //         showNewModal();
+        //     },
+        //     position: 'top-end',
+        //     allowOutsideClick: false,
+        //     allowEscapeKey: false,
+        // });
+        Toastify({
+            text: 'Please Enter Email',
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: 'top', // `top` or `bottom`
+            position: 'left', // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+        }).showToast();
     } else if (!emailTo.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         Toastify({
             text: 'Please Enter valid Email',
