@@ -1,154 +1,118 @@
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+    cloud_name: 'rbmslab',
+    api_key: '416967951867889',
+    api_secret: 'kwSIPXG-GZS6A4PUJf-Mqb556Uc',
+});
 require('./db');
+require('dotenv').config();
+
 const app = express();
 const Staff_Accounts = require('./models/Staff_Accounts.model');
-require('dotenv').config();
+const Bike_Info = require('./models/BikeInfo.model');
 
 app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT;
 
+// ADMINACCOUNT
 app.get('/fetchUsers', async (req, res) => {
-  try {
-    const data = await Staff_Accounts.find().exec();
-    res.json(data);
-  } catch (err) {
-    console.error('Error fetching users:', err);
-    res.status(500).send({ message: 'Error fetching users' });
-  }
+    try {
+        const data = await Staff_Accounts.find().exec();
+        res.json(data);
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        res.status(500).send({ message: 'Error fetching users' });
+    }
 });
 
 app.post('/findUser', async (req, res) => {
-  try {
-    const data = req.body;
-    // Check if account exists in your database
-    // const account = await db.collection('Staff_Accounts').findOne({ $and: [{ S_Username:data.S_Username }, { S_Password:data.S_Password }] });
-    const account = await Staff_Accounts.findOne({ $or: [{ S_Username:data.S_Username }, { S_Email: data.S_Email }] });
-    
+    try {
+        const data = req.body;
+        // Check if account exists in your database
+        // const account = await db.collection('Staff_Accounts').findOne({ $and: [{ S_Username:data.S_Username }, { S_Password:data.S_Password }] });
+        const account = await Staff_Accounts.findOne({
+            $or: [{ S_Username: data.S_Username }, { S_Email: data.S_Email }],
+        });
 
-    if (account) {
-      const isValidPassword = await bcrypt.compare(data.S_Password, account.S_Password);
-      if (isValidPassword || data.S_Email === account.S_Email) {
-        res.json({ exists: true });
-      } else {
-        res.json({ exists: false });
-      }
-    } else {
-      res.json({ exists: false });
+        if (account) {
+            const isValidPassword = await bcrypt.compare(data.S_Password, account.S_Password);
+            if (isValidPassword || data.S_Email === account.S_Email) {
+                res.json({ exists: true });
+            } else {
+                res.json({ exists: false });
+            }
+        } else {
+            res.json({ exists: false });
+        }
+    } catch (error) {
+        console.error('Error finding user:', error);
+        res.status(400).send({ message: 'Error finding user', error: error });
     }
-  } catch (error) {
-    console.error('Error finding user:', error);
-    res.status(400).send({ message: 'Error finding user', error: error });
-  }
 });
 
 app.post('/createUser', async (req, res) => {
+    try {
+        const data = req.body;
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(data.S_Password, saltRounds);
+
+        const user = Staff_Accounts({
+            S_Username: data.S_Username,
+            S_Password: hashedPassword,
+            S_Email: data.S_Email,
+        });
+
+        await user.save();
+
+        console.log('User created:', user);
+        res.status(201).send({ message: 'User created successfully' });
+    } catch (err) {
+        console.error('Error creating user:', err);
+        res.status(400).send({ message: 'Error creating user', error: err });
+    }
+});
+
+const upload = multer({ dest: './uploads/' });
+
+app.post('/upload-image', upload.single('file'), async (req, res) => {
   try {
-    const data = req.body;
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(data.S_Password, saltRounds);
-
-    const user = Staff_Accounts({
-      S_Username: data.S_Username,
-      S_Password: hashedPassword,
-      S_Email: data.S_Email
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'bikeImages',
     });
-
-    await user.save();
-
-    console.log('User created:', user);
-    res.status(201).send({ message: 'User created successfully' });
+    res.json({ url: result.secure_url });
   } catch (err) {
-    console.error('Error creating user:', err);
-    res.status(400).send({ message: 'Error creating user', error: err });
+    console.error('Error uploading image:', err);
+    res.status(400).send({ message: 'Error uploading image', error: err });
   }
+});
+app.post('/uploadBike', async (req, res) => {
+    try {
+        const data = req.body;
+        const newBike = new Bike_Info({
+            B_Name: data.B_Name,
+            B_Type: data.B_Type,
+            B_RentingPrice: data.B_RentingPrice,
+            B_BikeNumber: data.B_BikeNumber,
+            B_Description: data.B_Description,
+            B_ImageUrl: data.B_ImageUrl,
+            // other fields...
+        });
+        console.log(newBike);
+        await newBike.save();
+
+        res.status(201).send({ message: 'Bike uploaded.' });
+    } catch (err) {
+        console.error('Error uploading bike:', err);
+        res.status(400).send({ message: 'Error uploading bike', error: err });
+    }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}: http://localhost:${PORT}`);
+    console.log(`Server listening on port ${PORT}: http://localhost:${PORT}`);
 });
-
-// const express = require('express');
-// const cors = require('cors');
-// const bcrypt = require('bcrypt');
-// const db = require('./db');
-// const app = express();
-// const session = require('express-session');
-
-// app.use(cors());
-// app.use(express.json());
-// app.use(session({
-//   secret: 'secret-key',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: false }
-// }));
-
-// app.get('/fetchUsers', async (req, res) => {
-//   try {
-//     const data = await db.collection('Staff_Accounts').find().toArray();
-//     res.json(data);
-//   } catch (err) {
-//     console.error('Error fetching users:', err);
-//     res.status(500).send({ message: 'Error fetching users' });
-//   }
-// });
-
-// app.post('/findUser ', async (req, res) => {
-//   try {
-//     const data = req.body;
-//     const account = await db.collection('Staff_Accounts').findOne({ S_Username: data.S_Username });
-//     if (account) {
-//       const isValidPassword = await bcrypt.compare(data.S_Password, account.S_Password);
-//       if (isValidPassword) {
-//         req.session.isLoggedIn = true;
-//         req.session.username = data.S_Username;
-//         res.json({ exists: true, message: 'Logged in successfully' });
-//       } else {
-//         res.json({ exists: false, message: 'Invalid password' });
-//       }
-//     } else {
-//       res.json({ exists: false, message: 'User  not found' });
-//     }
-//   } catch (error) {
-//     console.error('Error finding user:', error);
-//     res.status(400).send({ message: 'Error finding user', error: error });
-//   }
-// });
-
-// app.post('/createUser ', async (req, res) => {
-//   try {
-//     const data = req.body;
-//     const saltRounds = 10;
-//     const hashedPassword = await bcrypt.hash(data.S_Password, saltRounds);
-
-//     const user = await db.collection('Staff_Accounts').insertOne({
-//       S_Username: data.S_Username,
-//       S_Password: hashedPassword,
-//     });
-
-//     console.log('User  created:', user);
-//     res.status(201).send({ message: 'User  created successfully' });
-//   } catch (err) {
-//     console.error('Error creating user:', err);
-//     res.status(400).send({ message: 'Error creating user', error: err });
-//   }
-// });
-
-// app.get('/logout', (req, res) => {
-//   req.session.destroy((err) => {
-//     if (err) {
-//       console.error('Error logging out:', err);
-//       res.status(500).send({ message: 'Error logging out' });
-//     } else {
-//       res.send({ message: 'Logged out successfully' });
-//     }
-//   });
-// });
-
-// app.listen(5000, () => {
-//   console.log('Server listening on port 5000');
-// });

@@ -7,50 +7,63 @@
         <link rel="stylesheet" href="../node_modules/toastify-js/src/toastify.css" />
         <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="./assets/js/jquery-3.7.1.min.js"></script>
-        <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="../node_modules/animate.css/animate.min.css" />
-        <link rel="stylesheet" href="../node_modules/aos/dist/aos.css">
+        <link rel="stylesheet" href="../node_modules/aos/dist/aos.css" />
         <script src="../node_modules/aos/dist/aos.js"></script>
         <!-- components -->
         <link rel="stylesheet" href="./components/HeaderNav/HeaderNav.css" />
     </head>
     <body>
-        <div class="NavContainer">
+        <nav class="NavContainer" id="sideNav">
             <div class="navbar animate__animated animate__zoomIn">
                 <div class="Logo">
-                  <img class="animate__animated animate__lightSpeedInLeft animate__delay-2s" src="./assets/images/navbar/logo.svg" alt="RBMS" id="logo">
+                    <img
+                        class="animate__animated animate__lightSpeedInLeft animate__delay-2s"
+                        src="./assets/images/navbar/logo.svg"
+                        alt="RBMS"
+                        id="logo"
+                    />
                 </div>
                 <div class="links">
-                  <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="Home" href="#HomePage">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="statistics" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
-                        >Statistics</a
-                      >
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" id="Revenue" href="#RevenuePage">Revenue</a></li>
-                        <li><a class="dropdown-item" id="Reservations" href="#ReservationsPage">Reservations</a></li>
-                        <li><a class="dropdown-item" id="WalkIn" href="#WalkInPage">Walk-In</a></li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="GPSTracking" href="#GPSTrackingPage">GPS Tracking</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="BikeAvailability" href="#BikeAvailabilityPage">Bike Availability</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="BikeUpload" href="#BikeUploadPage">Bike Upload</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="Accounts" href="#AccountsPage">Accounts</a>
-                    </li>
-                  </ul>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="Home" href="#HomePage">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                id="statistics"
+                                data-bs-toggle="dropdown"
+                                href="#"
+                                role="button"
+                                aria-expanded="false"
+                                >Statistics</a
+                            >
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="Revenue" href="#RevenuePage">Revenue</a></li>
+                                <li>
+                                    <a class="dropdown-item" id="Reservations" href="#ReservationsPage">Reservations</a>
+                                </li>
+                                <li><a class="dropdown-item" id="WalkIn" href="#WalkInPage">Walk-In</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="GPSTracking" href="#GPSTrackingPage">GPS Tracking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="BikeAvailability" href="#BikeAvailabilityPage">Bike Availability</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="BikeUpload" href="#BikeUploadPage">Bike Upload</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Accounts" href="#AccountsPage">Accounts</a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
-        </div>
+            </div>
+        </nav>
         <div class="Contents">
             <div class="HeaderNavContainer"></div>
             <div class="Content-Page">
@@ -96,10 +109,14 @@
                         </div>
                         <div class="row bottom-cards">
                             <div class="col-3">
-                                <div class="card revCard rounded-4 ">
+                                <div class="card revCard rounded-4" data-link-id="Revenue">
                                     <div class="card-body">
                                         <div class="row">
-                                            <img class="revIcon m-auto mb-2" src="./assets/images/home/revIcon.png" alt="revIcon" />
+                                            <img
+                                                class="revIcon m-auto mb-2"
+                                                src="./assets/images/home/revIcon.png"
+                                                alt="revIcon"
+                                            />
                                         </div>
                                         <div class="row">
                                             <p class="desc text-center">&#8369;&nbsp;500,000.00</p>
@@ -108,10 +125,14 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="card accCard rounded-4 ">
+                                <div class="card accCard rounded-4" data-link-id="Accounts">
                                     <div class="card-body">
                                         <div class="row">
-                                            <img class="accIcon m-auto mb-2" src="./assets/images/home/accIcon.png" alt="revIcon" />
+                                            <img
+                                                class="accIcon m-auto mb-2"
+                                                src="./assets/images/home/accIcon.png"
+                                                alt="revIcon"
+                                            />
                                         </div>
                                         <div class="row">
                                             <p class="desc text-center text-nowrap">1,114 Accounts</p>
@@ -120,7 +141,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="card mapCard rounded-4 ">
+                                <div class="card mapCard rounded-4" data-link-id="GPSTracking">
                                     <div class="card-body p-0">
                                         <div class="row">
                                             <img class="mapIcon" src="./assets/images/home/mapIcon.png" alt="revIcon" />
@@ -132,10 +153,14 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="card bikeCard rounded-4 ">
+                                <div class="card bikeCard rounded-4" data-link-id="BikeAvailability">
                                     <div class="card-body p-0">
                                         <div class="row">
-                                            <img class="bikeIcon" src="./assets/images/home/bikeIcon.png" alt="revIcon" />
+                                            <img
+                                                class="bikeIcon"
+                                                src="./assets/images/home/bikeIcon.png"
+                                                alt="revIcon"
+                                            />
                                         </div>
                                         <div class="row">
                                             <p class="desc text-center text-nowrap gpsTText">5 bikes available</p>
@@ -146,33 +171,76 @@
                         </div>
                     </div>
                 </section>
-                <section id="RevenuePage">
-                    this is Revenue
-                </section>
-                <section id="ReservationsPage">
-                    this is Reservations
-                </section>
-                <section id="WalkInPage">
-                    this is Walk-In
-                </section>
-                <section id="GPSTrackingPage">
-                    this is GPS-Tracking
-                </section>
-                <section id="BikeAvailabilityPage">
-                    this is Bike Availability
-                </section>
+                <section id="RevenuePage">this is Revenue</section>
+                <section id="ReservationsPage">this is Reservations</section>
+                <section id="WalkInPage">this is Walk-In</section>
+                <section id="GPSTrackingPage">this is GPS-Tracking</section>
+                <section id="BikeAvailabilityPage">this is Bike Availability</section>
                 <section id="BikeUploadPage">
-                    <div class="form-container">
+                    <form class="form-container needs-validation" id="bikeUploadForm" novalidate>
                         <div class="form-title"><p>BIKE INFORMATION</p></div>
-                        <hr/>
+                        <hr />
                         <div class="form-body">
-                            
+                            <div class="mb-3">
+                                <div class="card bikeImg">
+                                    <div class="card-img">
+                                        <img src="" alt="bikeimage">
+                                    </div>
+                                </div>
+                                <input class="form-control" type="file" id="formFile" accept="image/*">
+                                <div class="invalid-feedback">
+                                    Please provide an image.
+                                  </div>
+                              </div>
+                            <div class="mb-3">
+                                <label for="NameOfBike" class="form-label">Name of Bike</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="NameOfBike"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Type of Bike</label>
+                                <select class="form-select" aria-label="Default select example" id="bikeType" required>
+                                    <option value="">Select Type of Bike</option>
+                                    <option value="Adult">Adult</option>
+                                    <option value="Kid">Kid</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="rentingPrice" class="form-label">Renting Price(&#8369;)</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="rp"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="bikeNum" class="form-label">Bike Number</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="bikeNum"
+                                    readonly
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="bikeDesc" class="form-label">Bike Description</label>
+                                <textarea class="form-control" id="bikeDesc" rows="6" required></textarea>
+                            </div>
+                            <div class="mb-3 btns">
+                                <div class="btnGroup">
+                                    <button type="submit" class="btn btn-success" id="btnUp">Upload</button>
+                                    <button type="reset" class="btn btn-danger" id="btnReset">Reset</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </section>
-                <section id="AccountsPage">
-                    this is Accounts
-                </section>
+                <section id="AccountsPage">this is Accounts</section>
             </div>
         </div>
         <!-- scripts -->
@@ -183,5 +251,6 @@
         <script src="../node_modules//toastify-js/src/toastify.js"></script>
         <script src="./index.js"></script>
         <script src="./renderer.js"></script>
+        <script src="./mongoQuery.js"></script>
     </body>
 </html>

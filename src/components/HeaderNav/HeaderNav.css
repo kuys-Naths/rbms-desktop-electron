@@ -44,11 +44,11 @@
 }
 
 
-.logout {
+.collapse-menu {
     position: relative;
 }
 
-.logout .links .h-menu {
+.collapse-menu .links .h-menu {
     position: absolute;
     right: 10px;
     top: 50px;
@@ -70,13 +70,13 @@
     z-index: 1;
 }
 
-.logout .links .h-menu li {
+.collapse-menu .links .h-menu li {
     list-style: none;
     text-align: end;
     padding-right: 15px;
 }
 
-.logout .links .h-menu li a {
+.collapse-menu .links .h-menu li a {
     text-decoration: none;
     color: white;
 }

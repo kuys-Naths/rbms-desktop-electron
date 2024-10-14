@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
+
+
 require('./backend/server');
 require('dotenv').config();
 const { updateElectronApp } = require('update-electron-app')
@@ -143,4 +145,3 @@ ipcMain.handle('send-email', (event, emailTo, sendOTP, emailHTML) => {
     } 
   });
 });
-
