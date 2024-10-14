@@ -3,13 +3,15 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
-cloudinary.config({
-    cloud_name: 'rbmslab',
-    api_key: '416967951867889',
-    api_secret: 'kwSIPXG-GZS6A4PUJf-Mqb556Uc',
-});
+
 require('./db');
 require('dotenv').config();
+
+cloudinary.config({
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret,
+});
 
 const app = express();
 const Staff_Accounts = require('./models/Staff_Accounts.model');
@@ -78,6 +80,8 @@ app.post('/createUser', async (req, res) => {
     }
 });
 
+
+//cloudinary
 const upload = multer({ dest: './uploads/' });
 
 app.post('/upload-image', upload.single('file'), async (req, res) => {
@@ -101,9 +105,7 @@ app.post('/uploadBike', async (req, res) => {
             B_BikeNumber: data.B_BikeNumber,
             B_Description: data.B_Description,
             B_ImageUrl: data.B_ImageUrl,
-            // other fields...
         });
-        console.log(newBike);
         await newBike.save();
 
         res.status(201).send({ message: 'Bike uploaded.' });

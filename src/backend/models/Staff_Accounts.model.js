@@ -13,6 +13,11 @@ const Staff_Accounts_Schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    isSuperAdmin: {
+        type: Boolean,
+        required: true,
+        default: false,
+    }
 });
 
 const Staff_Accounts = mongoose.model('Staff_Accounts', Staff_Accounts_Schema);
