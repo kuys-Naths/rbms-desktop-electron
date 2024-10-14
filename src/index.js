@@ -25,7 +25,7 @@ $(document).ready(function () {
         });
 
         const $hamburger = $('.hamburger');
-        const $logout = $('.logout');
+        const $logout = $('.collapse-menu');
         const $logoutButton = $logout.find('#logout');
 
         $hamburger.on('click', function () {
@@ -41,9 +41,16 @@ $(document).ready(function () {
 
         // Close menu when clicking outside
         $(document).on('click', function (event) {
-            if (!$logout.is(event.target) && $logout.has(event.target).length === 0 && $logout.hasClass('active')) {
-                $logout.removeClass('active');
-            }
+            $(document).on('click', function (event) {
+                if (
+                    !$hamburger.is(event.target) &&
+                    $hamburger.has(event.target).length === 0 &&
+                    $hamburger.hasClass('active')
+                ) {
+                    $hamburger.removeClass('active');
+                    $logout.removeClass('active');
+                }
+            });
         });
 
         $('.card').on('click', function () {
@@ -53,8 +60,10 @@ $(document).ready(function () {
 
             if (linkId === 'Revenue') {
                 $('#statistics').text('Revenue');
+                $('#statistics').addClass('active'); // Add this line
             } else {
                 $('#statistics').text('Statistics');
+                $('#statistics').removeClass('active'); // Add this line
             }
         });
     });

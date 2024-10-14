@@ -64,6 +64,125 @@
                 </div>
             </div>
         </nav>
+        <div class="offcanvas offcanvas-start" tabindex="1" id="profEdit" data-bs-keyboard="false">
+            <div class="offcanvas-header">
+                <button
+                    type="button"
+                    class="btn-close text-reset"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="offcanvas-body">
+                <form>
+                    <div class="form-title mb-4 d-inline-flex">
+                        <h3>Update your account information</h3>
+                        <button type="button" id="btnEdit" ><i class="fa fa-edit"></i></button>
+                    </div>
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="A_Name" class="form-label">Name</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_Name"
+                                        placeholder="Welberin, Ougag M."
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_Address" class="form-label">Address</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_Name"
+                                        placeholder="510 St. Marys Rd."
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_CNum" class="form-label">Contact Number</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_CNum"
+                                        placeholder="+630123456789"
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_Email" class="form-label">Email Address</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_Email"
+                                        placeholder="welberin@gmail.com"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="A_Username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="A_Username" placeholder="Username" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_Current_Password" class="form-label">Current Password</label>
+                                    <div class="input-group mb-3">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            id="A_Current_Password"
+                                            placeholder="Current Password"
+                                        />
+                                        <button id="show-cpass" class="btn btn-secondary" style="background-color: #355E3B;" type="button">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_New_Password" class="form-label">New Password</label>
+                                    <div class="input-group mb-3">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            id="A_New_Password"
+                                            placeholder="New Password"
+                                        />
+                                        <button id="show-npass" class="btn btn-secondary" style="background-color: #355E3B;" type="button">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_cNew_Password" class="form-label">Confirm New Password</label>
+                                    <div class="input-group mb-3">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            id="A_cNew_Password"
+                                            placeholder="Confirm New Password"
+                                        />
+                                        <button id="show-npass" class="btn btn-secondary" style="background-color: #355E3B;" type="button">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="A_Confirm_Password" class="form-label">One Time Password for Reset</label>
+                                    <div class="input-group mb-3">
+                                        <input id="otp" type="text" class="form-control" placeholder="XXXXX" aria-label="XXXXX" aria-describedby="getOTP">
+                                        <a href="javascript:getOTP()" class="btn btn-dark" style="background-color: #355E3B;">Get OTP</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons d-inline-flex">
+                                <button type="button" class="btn btn-success" id="btnSave" style="width: 150px;">Save</button>
+                                <button type="reset" class="btn btn-danger" id="btnReset" style="width: 150px;">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="Contents">
             <div class="HeaderNavContainer"></div>
             <div class="Content-Page">
@@ -184,22 +303,15 @@
                             <div class="mb-3">
                                 <div class="card bikeImg">
                                     <div class="card-img">
-                                        <img src="" alt="bikeimage">
+                                        <img src="" alt="bikeimage" />
                                     </div>
                                 </div>
-                                <input class="form-control" type="file" id="formFile" accept="image/*">
-                                <div class="invalid-feedback">
-                                    Please provide an image.
-                                  </div>
-                              </div>
+                                <input class="form-control" type="file" id="formFile" accept="image/*" />
+                                <div class="invalid-feedback">Please provide an image.</div>
+                            </div>
                             <div class="mb-3">
                                 <label for="NameOfBike" class="form-label">Name of Bike</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="NameOfBike"
-                                    required
-                                />
+                                <input type="text" class="form-control" id="NameOfBike" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Type of Bike</label>
@@ -211,21 +323,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="rentingPrice" class="form-label">Renting Price(&#8369;)</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="rp"
-                                    required
-                                />
+                                <input type="text" class="form-control" id="rp" required />
                             </div>
                             <div class="mb-3">
                                 <label for="bikeNum" class="form-label">Bike Number</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="bikeNum"
-                                    readonly
-                                />
+                                <input type="text" class="form-control" id="bikeNum" readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="bikeDesc" class="form-label">Bike Description</label>

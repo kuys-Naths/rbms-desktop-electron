@@ -4,15 +4,17 @@
     </div>
     <div class="collapse-menu">
         <!-- <button type="button" id="logout" class="btn btn-danger">Logout</button> -->
-        <div class="hamburger">
+        <div class="hamburger" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
             <span></span>
             <span></span>
             <span></span>
         </div>
         <div class="links">
             <ul class="h-menu">
-                <li><a href="#" id="editProf">Edit Profile</a></li>
-                <hr/>
+                <li>
+                    <a id="editProf" data-bs-toggle="offcanvas" href="#profEdit" role="button" data-bs-target="#profEdit" aria-controls="offcanvasWithBackdrop">Edit Profile</a>
+                </li>
+                <hr />
                 <li><a href="#" id="logout">Logout</a></li>
             </ul>
         </div>

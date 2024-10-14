@@ -6,7 +6,7 @@ let myOtp;
 let userLogin;
 let userPass;
 let isLoggedIn = localStorage.getItem('isLoggedIn');
-
+let isSAdmin = localStorage.getItem('isSAdmin');
 document.addEventListener('DOMContentLoaded', function (arg) {
     checkSession();
 });
@@ -16,6 +16,11 @@ function checkSession() {
         console.log(isLoggedIn);
         Login();
     } else {
+        if(isSAdmin !== 'true'){
+            console.log(isSAdmin);
+            $('#Revenue').remove();
+            $('#RevenuePage').remove();
+        }
         localStorage.setItem('isLoggedIn', 'true');
         document.getElementById('username').innerText = localStorage.getItem('sessionUser');
     }
@@ -91,7 +96,8 @@ function Login() {
             // console.log(S_Username + ', '+ S_Password);
             window.addEventListener('account-found', (event) => {
                 const response = event.detail;
-                // console.log(response);
+                console.log(response);
+                
                 if (response.success === true) {
                     Swal.fire({
                         toast: true,
@@ -106,7 +112,8 @@ function Login() {
                         didClose: () => {
                             localStorage.setItem('isLoggedIn', 'true');
                             localStorage.setItem('sessionUser', userLogin);
-                            document.getElementById('username').innerText = localStorage.getItem('sessionUser');
+                            localStorage.setItem('isSAdmin', response.SAdmin);
+                            // document.getElementById('username').innerText = localStorage.getItem('sessionUser');
                             location.reload();
                         },
                         icon: 'success',

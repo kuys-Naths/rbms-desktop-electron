@@ -29,7 +29,7 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     },
   });
 
@@ -71,6 +71,7 @@ ipcMain.handle('login-data', async (event, data) => {
     const existingAccountResponse = await axios.post(`http://localhost:${PORT}/findUser`, data);
     if (existingAccountResponse.data.exists) {
       event.sender.send('account-found', {
+        SAdmin: existingAccountResponse.data.isSuperAdmin,
         success: true,
         message: 'Logged In',
       });

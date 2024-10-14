@@ -88,7 +88,30 @@ body {
   transition: padding-left 0.1s ease-in-out;
   color: white;
 }
+/* offcanvas */
+.offcanvas {
+  width: 96.5% !important;
+  height: 95%;
+  margin: auto;
+  margin-left: 19.5px;
+  position: absolute;
+  background-color: #D6D6CA;
+  border-radius: 12px;
+}
+.offcanvas .offcanvas-header {
+  background-color: #355E3B;
+  border-radius: 12px 12px 0 0;
+}
+.offcanvas .offcanvas-header #btnEdit{
+.offcanvas .offcanvas-body .buttons{
+  padding-left: 35%;
+  padding-top: 20px;
+}
 
+.offcanvas .offcanvas-body .buttons .btn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
 /* SECTIONS */
 section{
@@ -134,7 +157,7 @@ section{
 }
 
 .bottom-cards{
-  padding-top: 10px;
+  padding-top: 40px;
 }
 .bottom-cards .card {
   height: 150px;

@@ -45,9 +45,10 @@ app.post('/findUser', async (req, res) => {
         if (account) {
             const isValidPassword = await bcrypt.compare(data.S_Password, account.S_Password);
             if (isValidPassword || data.S_Email === account.S_Email) {
-                res.json({ exists: true });
+                const isSAdmin = account.isSuperAdmin;
+                res.json({ isSuperAdmin: isSAdmin, exists: true });
             } else {
-                res.json({ exists: false });
+                res.json({ isSuperAdmin: isSAdmin, exists: false });
             }
         } else {
             res.json({ exists: false });
