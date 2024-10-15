@@ -102,10 +102,31 @@ body {
   background-color: #355E3B;
   border-radius: 12px 12px 0 0;
 }
-.offcanvas .offcanvas-header #btnEdit{
+.offcanvas .offcanvas-body .form-title {
+  display: flex;
+  justify-content: space-between;
+}
+.offcanvas .offcanvas-body #btnEdit{
+  appearance: none; 
+  background: none; 
+  outline: none; 
+  border: none;
+  margin-right: 20px;
+  display: flex;
+}
+.offcanvas .offcanvas-body #btnEdit:hover {
+  color: #355E3B;
+}
+.offcanvas .offcanvas-body #btnEdit i {
+  font-size: 28px;
+}
+.offcanvas .offcanvas-body #btnEdit i span {
+  font-size: 28px;
+  padding-bottom: 5px;
+}
+
 .offcanvas .offcanvas-body .buttons{
   padding-left: 35%;
-  padding-top: 20px;
 }
 
 .offcanvas .offcanvas-body .buttons .btn {

@@ -71,7 +71,9 @@ ipcMain.handle('login-data', async (event, data) => {
     const existingAccountResponse = await axios.post(`http://localhost:${PORT}/findUser`, data);
     if (existingAccountResponse.data.exists) {
       event.sender.send('account-found', {
+        Sname: existingAccountResponse.data.SName,
         SAdmin: existingAccountResponse.data.isSuperAdmin,
+        SId: existingAccountResponse.data.myId,
         success: true,
         message: 'Logged In',
       });

@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    if (localStorage.getItem('alertShown') !== 'true') {
+        // Show the alert
+        document.getElementById('updateAlert').style.display = 'block';
+        
+        // Set the local storage to prevent the alert from showing again
+        localStorage.setItem('alertShown', true);
+    } else {
+        // Hide the alert
+        document.getElementById('updateAlert').style.display = 'none';
+    }
     $(window).scrollTop(0);
 
     var originalText = $('#statistics').text();
@@ -108,7 +118,8 @@ $(document).ready(function () {
 
     $formFile.on('change', function (e) {
         const file = e.target.files[0];
-
+        $formFile.val(''); // Clear the input
+        $cardImg.attr('src', '');
         // Check if the selected file is an image
         if (file && file.type.startsWith('image/')) {
             const reader = new FileReader();
@@ -158,4 +169,122 @@ $(document).ready(function () {
     }
     const BikeID = 'RBMS-' + makeBikeID(4);
     $('#bikeNum').val(BikeID);
+
+    //EditAccountInfo
+    const $passwordInput = $('#A_New_Password');
+    const $showPasswordButton = $('#show-npass');
+
+    // Add an event listener to the show password button
+    $showPasswordButton.on('click', function () {
+        // Toggle the password input type
+        $passwordInput.attr('type', $passwordInput.attr('type') === 'password' ? 'text' : 'password');
+        // Toggle the button text
+        $(this).html(
+            $(this).html() === '<i class="fa fa-eye"></i>'
+                ? '<i class="fa fa-eye-slash"></i>'
+                : '<i class="fa fa-eye"></i>',
+        );
+    });
+    const $cpasswordInput = $('#A_cNew_Password');
+    const $showcPasswordButton = $('#show-cnpass');
+
+    // Add an event listener to the show password button
+    $showcPasswordButton.on('click', function () {
+        // Toggle the password input type
+        $cpasswordInput.attr('type', $cpasswordInput.attr('type') === 'password' ? 'text' : 'password');
+        // Toggle the button text
+        $(this).html(
+            $(this).html() === '<i class="fa fa-eye"></i>'
+                ? '<i class="fa fa-eye-slash"></i>'
+                : '<i class="fa fa-eye"></i>',
+        );
+    });
+
+    const userId = localStorage.getItem('myId');
+    loadUser(userId);
+    $('#btnEdit').on('click', function () {
+        $('input').prop('readonly', function (index, value) {
+            return !value;
+        });
+
+        $('#btnSave').prop('disabled', function(i, val) {
+            return !val; // Toggle the disabled state
+        });
+    });
+
+    $('#btnReset').on('click', () => {
+        loadUser(userId);
+    });
+    function loadUser(id) {
+        try {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8917/findById/' + id, // replace with your endpoint URL
+                dataType: 'json',
+                success: function (data) {
+                    // console.log(data); // user data
+                    $('#A_Username').val(data.S_Username);
+                    $('#A_Email').val(data.S_Email);
+                    $('#A_Name').val(data.S_Name);
+                    $('#A_Address').val(data.S_Address);
+                    $('#A_CNum').val(data.S_ContactNum);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error); // error message
+                },
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    $('#btnSave').on('click', function () {
+        const AName = $('#A_Name').val();
+        const AAddress = $('#A_Address').val();
+        const ACNum = $('#A_CNum').val();
+        const AEmail = $('#A_Email').val();
+        const APassword = $('#A_New_Password').val();
+
+        const newUser = {
+            S_Name: AName,
+            S_Address: AAddress,
+            S_ContactNum: ACNum,
+            S_Email: AEmail,
+        }
+        
+        $.ajax({
+            type: "PUT",
+            url: "http://localhost:8917/updateUser/" + userId,
+            data: JSON.stringify(newUser),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                $('#A_Username').val(data.S_Username);
+                $('#A_Email').val(data.S_Email);
+                $('#A_Name').val(data.S_Name);
+                $('#A_Address').val(data.S_Address);
+                $('#A_CNum').val(data.S_ContactNum);
+
+                Swal.fire({
+                    toast: true,
+                    text: 'Updated Successfully',
+                    icon: 'success',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    position: 'top-end',
+                    didClose: () => {
+                        localStorage.setItem('sessionUser', data.S_Name);
+                        location.reload();
+                    }
+                })
+            },
+            error: function (error) {
+                console.log(error); // error message
+            }
+
+
+        })
+    });
+    
 });

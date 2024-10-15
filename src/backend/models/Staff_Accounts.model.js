@@ -17,6 +17,18 @@ const Staff_Accounts_Schema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false,
+    },
+    S_Name:{
+        type: String,
+    },
+    S_ContactNum: {
+        type: String,
+    },
+    S_Email: {
+        type: String,
+    },
+    S_Address:{
+        type: String,
     }
 });
 

@@ -46,7 +46,9 @@ app.post('/findUser', async (req, res) => {
             const isValidPassword = await bcrypt.compare(data.S_Password, account.S_Password);
             if (isValidPassword || data.S_Email === account.S_Email) {
                 const isSAdmin = account.isSuperAdmin;
-                res.json({ isSuperAdmin: isSAdmin, exists: true });
+                const Id = account._id;
+                const sName = account.S_Name;
+                res.json({SName: sName, myId: Id, isSuperAdmin: isSAdmin, exists: true });
             } else {
                 res.json({ isSuperAdmin: isSAdmin, exists: false });
             }
@@ -81,20 +83,19 @@ app.post('/createUser', async (req, res) => {
     }
 });
 
-
 //cloudinary
 const upload = multer({ dest: './uploads/' });
 
 app.post('/upload-image', upload.single('file'), async (req, res) => {
-  try {
-    const result = await cloudinary.uploader.upload(req.file.path, {
-      folder: 'bikeImages',
-    });
-    res.json({ url: result.secure_url });
-  } catch (err) {
-    console.error('Error uploading image:', err);
-    res.status(400).send({ message: 'Error uploading image', error: err });
-  }
+    try {
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: 'bikeImages',
+        });
+        res.json({ url: result.secure_url });
+    } catch (err) {
+        console.error('Error uploading image:', err);
+        res.status(400).send({ message: 'Error uploading image', error: err });
+    }
 });
 app.post('/uploadBike', async (req, res) => {
     try {
@@ -113,6 +114,50 @@ app.post('/uploadBike', async (req, res) => {
     } catch (err) {
         console.error('Error uploading bike:', err);
         res.status(400).send({ message: 'Error uploading bike', error: err });
+    }
+});
+
+app.get('/findById/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        // Check if account exists in your database
+        const account = await Staff_Accounts.findOne({ _id: id });
+
+        if (account) {
+            res.json(account);
+            res.status(201).send({ message: 'found.' });
+        }
+    } catch (error) {
+        console.error('Error finding user:', error);
+        res.status(400).send({ message: 'Error finding user', error: error });
+    }
+});
+
+app.put('/updateUser/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        console.log(id);
+        const updates = req.body;
+
+        const updatedUser = await Staff_Accounts.findByIdAndUpdate(id, updates, { new: true });
+
+        if (updatedUser) {
+            res.send(updatedUser);
+        } else {
+            res.status(404).send({ message: 'User  not found' }); // or res.status(500).send({ message: 'Internal Server Error' });
+        }
+    } catch (error) {
+        console.log('Error: ', error);
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
+});
+
+app.get('/countBikes', async (req, res) => {
+    try {
+        const bikeCount = await Bike_Info.countDocuments().exec();
+        res.json({ count: bikeCount });
+    } catch (error) {
+        console.error('Error counting bikes:', error);
     }
 });
 

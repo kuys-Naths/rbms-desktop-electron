@@ -7,23 +7,27 @@ let userLogin;
 let userPass;
 let isLoggedIn = localStorage.getItem('isLoggedIn');
 let isSAdmin = localStorage.getItem('isSAdmin');
+let myId = localStorage.getItem('myId');
+
 document.addEventListener('DOMContentLoaded', function (arg) {
     checkSession();
 });
 
 function checkSession() {
     if (isLoggedIn !== 'true') {
-        console.log(isLoggedIn);
+        // console.log(isLoggedIn);
         Login();
+        
     } else {
         if(isSAdmin !== 'true'){
-            console.log(isSAdmin);
+            // console.log(isSAdmin);
             $('#Revenue').remove();
             $('#RevenuePage').remove();
         }
         localStorage.setItem('isLoggedIn', 'true');
-        document.getElementById('username').innerText = localStorage.getItem('sessionUser');
-    }
+        (localStorage.getItem('sessionUser') === 'undefined') ? (document.getElementById('username').innerText = "please update your profile") : (document.getElementById('username').innerText = localStorage.getItem('sessionUser'));
+
+    }   
 }
 
 //LOGIN
@@ -111,8 +115,10 @@ function Login() {
                         },
                         didClose: () => {
                             localStorage.setItem('isLoggedIn', 'true');
-                            localStorage.setItem('sessionUser', userLogin);
+                            localStorage.setItem('sessionUser', response.Sname);
                             localStorage.setItem('isSAdmin', response.SAdmin);
+                            localStorage.setItem("myId", response.SId);
+                            localStorage.setItem('alertShown', false);
                             // document.getElementById('username').innerText = localStorage.getItem('sessionUser');
                             location.reload();
                         },

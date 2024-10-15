@@ -15,6 +15,10 @@
         <link rel="stylesheet" href="./components/HeaderNav/HeaderNav.css" />
     </head>
     <body>
+        <div class="alert alert-info alert-dismissible fade show animate__animated animate__fadeInDown position-absolute z-3 end-0" style="margin-right: 85px;" role="alert" id="updateAlert">
+            Uppdate your account information if needed.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <nav class="NavContainer" id="sideNav">
             <div class="navbar animate__animated animate__zoomIn">
                 <div class="Logo">
@@ -75,9 +79,12 @@
             </div>
             <div class="offcanvas-body">
                 <form>
-                    <div class="form-title mb-4 d-inline-flex">
+                    <div class="form-title mb-4">
                         <h3>Update your account information</h3>
-                        <button type="button" id="btnEdit" ><i class="fa fa-edit"></i></button>
+                        <button type="button" id="btnEdit">
+                            <i class="fa fa-edit"></i>&nbsp;
+                            <span>Edit</span>
+                        </button>
                     </div>
                     <div class="form-body">
                         <div class="row">
@@ -89,6 +96,7 @@
                                         class="form-control"
                                         id="A_Name"
                                         placeholder="Welberin, Ougag M."
+                                        readonly
                                     />
                                 </div>
                                 <div class="mb-3">
@@ -96,8 +104,9 @@
                                     <input
                                         type="text"
                                         class="form-control"
-                                        id="A_Name"
+                                        id="A_Address"
                                         placeholder="510 St. Marys Rd."
+                                        readonly
                                     />
                                 </div>
                                 <div class="mb-3">
@@ -107,6 +116,7 @@
                                         class="form-control"
                                         id="A_CNum"
                                         placeholder="+630123456789"
+                                        readonly
                                     />
                                 </div>
                                 <div class="mb-3">
@@ -116,27 +126,22 @@
                                         class="form-control"
                                         id="A_Email"
                                         placeholder="welberin@gmail.com"
+                                        readonly
+                                        disabled
                                     />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="A_Username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="A_Username" placeholder="Username" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="A_Current_Password" class="form-label">Current Password</label>
-                                    <div class="input-group mb-3">
-                                        <input
-                                            type="password"
-                                            class="form-control"
-                                            id="A_Current_Password"
-                                            placeholder="Current Password"
-                                        />
-                                        <button id="show-cpass" class="btn btn-secondary" style="background-color: #355E3B;" type="button">
-                                            <i class="fa fa-eye"></i>
-                                        </button>
-                                    </div>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="A_Username"
+                                        placeholder="Username"
+                                        readonly
+                                        disabled
+                                    />
                                 </div>
                                 <div class="mb-3">
                                     <label for="A_New_Password" class="form-label">New Password</label>
@@ -146,9 +151,15 @@
                                             class="form-control"
                                             id="A_New_Password"
                                             placeholder="New Password"
+                                            readonly
                                         />
-                                        <button id="show-npass" class="btn btn-secondary" style="background-color: #355E3B;" type="button">
-                                            <i class="fa fa-eye"></i>
+                                        <button
+                                            id="show-npass"
+                                            class="btn btn-secondary"
+                                            style="background-color: #355e3b"
+                                            type="button"
+                                        >
+                                            <i class="fa fa-eye-slash"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -160,23 +171,53 @@
                                             class="form-control"
                                             id="A_cNew_Password"
                                             placeholder="Confirm New Password"
+                                            readonly
                                         />
-                                        <button id="show-npass" class="btn btn-secondary" style="background-color: #355E3B;" type="button">
-                                            <i class="fa fa-eye"></i>
+                                        <button
+                                            id="show-cnpass"
+                                            class="btn btn-secondary"
+                                            style="background-color: #355e3b"
+                                            type="button"
+                                        >
+                                            <i class="fa fa-eye-slash"></i>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="A_Confirm_Password" class="form-label">One Time Password for Reset</label>
+                                <div class="mb-5">
+                                    <label for="A_Confirm_Password" class="form-label"
+                                        >One Time Password for Reset</label
+                                    >
                                     <div class="input-group mb-3">
-                                        <input id="otp" type="text" class="form-control" placeholder="XXXXX" aria-label="XXXXX" aria-describedby="getOTP">
-                                        <a href="javascript:getOTP()" class="btn btn-dark" style="background-color: #355E3B;">Get OTP</a>
+                                        <input
+                                            id="otp"
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="XXXXX"
+                                            aria-label="XXXXX"
+                                            aria-describedby="getOTP"
+                                        />
+                                        <a
+                                            href="javascript:getOTP()"
+                                            class="btn btn-dark"
+                                            style="background-color: #355e3b"
+                                            >Get OTP</a
+                                        >
                                     </div>
                                 </div>
                             </div>
                             <div class="buttons d-inline-flex">
-                                <button type="button" class="btn btn-success" id="btnSave" style="width: 150px;">Save</button>
-                                <button type="reset" class="btn btn-danger" id="btnReset" style="width: 150px;">Reset</button>
+                                <button
+                                    type="button"
+                                    class="btn btn-success"
+                                    id="btnSave"
+                                    style="width: 150px"
+                                    disabled
+                                >
+                                    Save
+                                </button>
+                                <button type="button" class="btn btn-danger" id="btnReset" style="width: 150px">
+                                    Reset
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -349,6 +390,7 @@
         <script>
             AOS.init();
         </script>
+        <script src="./assets/js/bcrypt.js"></script>
         <script src="../node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
         <script src="../node_modules//toastify-js/src/toastify.js"></script>
         <script src="./index.js"></script>
