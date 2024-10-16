@@ -298,3 +298,251 @@ section{
   height: 100%;
   object-fit: cover;
 }
+
+
+/* revenue */
+#RevenuePage .Title{
+  font-size: 28px;
+}
+#RevenuePage .cards {
+  width: 500px;
+}
+#RevenuePage .card {
+  height: 200px;
+  width: 150px;
+}
+#RevenuePage .card .card-body .sale-title {
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 60px;
+  span {
+    font-size: 10px;
+  }
+}
+.chart{
+  margin-top: 15px;
+  margin-left: 45px;
+}
+.chart #revChart {
+  width: 650px !important;
+  height: 330px !important;
+}
+
+/* RESERVATION */
+#ReservationsPage > .container-res {
+  /* background-color: aqua; */
+  /* margin-top: 63px; */
+  padding: 2rem;
+}
+#ReservationsPage > .container-res > #title-res {
+  /* background-color: aqua; */
+  font-size: 22px;
+}
+#ReservationsPage > .container-res > #line-divider {
+  /* background-color: aqua; */
+  width: 100%px;
+  height: 5px;
+  background-color: #099654;
+  border-radius: 5px 5px 0 0;
+  margin-top: 15px;
+}
+#table-res-container {
+  margin-top: 50px;
+}
+table.res-table {
+  background-color: #f5f5f5;
+  display: block;
+  width: 700px;
+  height: 450px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+table.res-table td {
+  border: 1px solid #f5f5f5;
+}
+table.res-table tr:nth-child(odd) {
+  background: #dedede;
+}
+table.res-table thead th {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+
+/* walkin */
+#WalkInPage > .container-win {
+  /* background-color: aqua; */
+  /* margin-top: 63px; */
+  padding: 2rem;
+}
+#WalkInPage > .container-win > #title-win {
+  /* background-color: aqua; */
+  font-size: 22px;
+}
+#WalkInPage > .container-win > #line-divider {
+  /* background-color: aqua; */
+  width: 100%;
+  height: 5px;
+  background-color: #099654;
+  border-radius: 5px 5px 0 0;
+  margin-top: 15px;
+}
+#table-win-container {
+  margin-top: 50px;
+}
+table.win-table {
+  background-color: #f5f5f5;
+  display: block;
+  width: 700px;
+  height: 450px;
+  overflow: auto;
+  white-space: nowrap;
+}
+table.win-table td {
+  border: 1px solid #f5f5f5;
+}
+table.win-table tr:nth-child(odd) {
+  background: #dedede;
+}
+table.win-table thead th {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+/* GPS */
+#GPSTrackingPage .gps-container {
+  /* background-color: rgb(163, 113, 113); */
+  /* margin-top: 63px; */
+  width: auto;
+}
+#GPSTrackingPage .gps-container .GPS-Title{
+  display: flex;
+  align-self: flex-start;
+  margin-left: 40px;
+}
+#GPSTrackingPage .gps-container .bike-container {
+  background-color: #355E3B;
+  width: 650px;
+  height: 525px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+#GPSTrackingPage .gps-container  .bike-container .bikes {
+  position: relative;
+  flex-direction: column;
+  width: 120px;
+  height: fit-content;
+  top: 40px;
+  left: 30px;
+}
+
+#GPSTrackingPage .gps-container  .bike-container .bikes button{ 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 120px;
+  padding: 10px;
+  appearance: none;
+  border: none;
+  font-weight: bold;
+}
+#GPSTrackingPage .gps-container  .bike-container .bikes button:hover{ 
+  background-color: #043820;
+  color: white;
+  border: white solid 1px;
+}
+#GPSTrackingPage .gps-container  .bike-container .bikes button:focus{ 
+  background-color: #043820;
+  color: white;
+  border: white solid 1px;
+}
+
+#GPSTrackingPage .gps-container .map-trace{
+  height: fit-content;
+  width: auto;
+  position: relative;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+#GPSTrackingPage .gps-container .map-trace .map{
+  background-color: cornsilk;
+  width: 430px;
+  height: 300px;
+  right: 0;
+}
+
+#BikeAvailabilityPage .bike-buttons{
+  display: grid;
+  grid-template-columns: repeat(3 ,1fr);
+  width: 550px;
+  gap: 55px;
+  margin-left: 120px;
+  margin-top: 25px;
+}
+#BikeAvailabilityPage .bike-buttons .bikeButton {
+  width: 150px;
+  height: 150px;
+  appearance: none;
+  border: none;
+  background-color: #69B578;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: bold;
+  transition: font-size ease-in-out .2s, background-color ease-in-out .2s;
+}
+#BikeAvailabilityPage .bike-buttons button:hover {
+  font-size: 23px;
+  color: white;
+  background-color: #28472eef
+}
+
+/* Account Page */
+#AccountsPage > .container-acc {
+  /* background-color: aqua; */
+  /* margin-top: 63px; */
+  padding: 2rem;
+}
+#AccountsPage > .container-acc > #title-acc {
+  /* background-color: aqua; */
+  font-size: 22px;
+}
+#AccountsPage > .container-acc > #line-divider {
+  /* background-color: aqua; */
+  width: 100%;
+  height: 5px;
+  background-color: #099654;
+  border-radius: 5px 5px 0 0;
+  margin-top: 15px;
+}
+#table-acc-container {
+  margin-top: 50px;
+}
+table.acc-table {
+  background-color: #f5f5f5;
+  display: block;
+  width: 700px;
+  height: 450px;
+  overflow: auto;
+  white-space: nowrap;
+}
+table.acc-table td {
+  border: 1px solid #f5f5f5;
+}
+table.acc-table tr:nth-child(odd) {
+  background: #dedede;
+}
+table.acc-table thead th {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+}

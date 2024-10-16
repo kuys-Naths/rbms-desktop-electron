@@ -10,7 +10,7 @@ const { updateElectronApp } = require('update-electron-app')
 updateElectronApp();
 
 const PORT = process.env.PORT;
-require('electron-reloader')(module);
+// require('electron-reloader')(module);
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {

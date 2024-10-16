@@ -15,7 +15,12 @@
         <link rel="stylesheet" href="./components/HeaderNav/HeaderNav.css" />
     </head>
     <body>
-        <div class="alert alert-info alert-dismissible fade show animate__animated animate__fadeInDown position-absolute z-3 end-0" style="margin-right: 85px;" role="alert" id="updateAlert">
+        <div
+            class="alert alert-info alert-dismissible fade show animate__animated animate__fadeInDown position-absolute z-3 end-0"
+            style="margin-right: 85px"
+            role="alert"
+            id="updateAlert"
+        >
             Uppdate your account information if needed.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -331,11 +336,459 @@
                         </div>
                     </div>
                 </section>
-                <section id="RevenuePage">this is Revenue</section>
-                <section id="ReservationsPage">this is Reservations</section>
-                <section id="WalkInPage">this is Walk-In</section>
-                <section id="GPSTrackingPage">this is GPS-Tracking</section>
-                <section id="BikeAvailabilityPage">this is Bike Availability</section>
+                <section id="RevenuePage">
+                    <div class="Title">Revenue</div>
+                    <div class="row cards">
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="sale-title">
+                                        Today's Sale
+                                        <span>04/16/2014</span>
+                                    </div>
+                                    <hr/>
+                                    <div class="sale-amount">$1,114</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="sale-title">
+                                        Monthly Sale
+                                        <span>04/16/2014</span>
+                                    </div>
+                                    <hr/>
+                                    <div class="sale-amount">$1,114</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="sale-title">
+                                        Yearly Sale
+                                        <span>04/16/2014</span>
+                                    </div>
+                                    <hr/>
+                                    <div class="sale-amount">$1,114</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row chart">
+                        <canvas id="revChart"></canvas>
+                    </div>
+                </section>
+                <section id="ReservationsPage">
+                    <div class="container-res">
+                        <label id="title-res" for="">RESERVATION</label>
+                        <div id="line-divider"></div>
+                        <div id="table-res-container">
+                          <table class="res-table">
+                            <thead>
+                              <tr id="headers">
+                                <th>Account_ID</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Contact no.</th>
+                                <th>Type of bikes</th>
+                                <th>Bike Number</th>
+                                <th>Duration of use</th>
+                                <th>Reserved hour</th>
+                                <th>Reservation fee</th>
+                                <th>Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                </section>
+                <section id="WalkInPage">
+                    <div class="container-win">
+                        <label id="title-win" for="">WALK-IN</label>
+                        <div id="line-divider"></div>
+                        <div id="table-win-container">
+                          <table class="win-table">
+                            <thead>
+                              <tr id="headers">
+                                <th>Account_ID</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Contact no.</th>
+                                <th>Type of bikes</th>
+                                <th>Bike Number</th>
+                                <th>Duration of use</th>
+                                <th>Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                </section>
+                <section id="GPSTrackingPage">
+                    <div class="container gps-container">
+                        <div class="row GPS-Title">
+                          <h4>BICYCLE'S LOCATION</h4>
+                        </div>
+                        <div class="row bike-container">
+                          <div class="col-4 bikes">
+                            <button type="button">BIKE 1</button>
+                            <button type="button">BIKE 2</button>
+                            <button type="button">BIKE 3</button>
+                            <button type="button">BIKE 4</button>
+                            <button type="button">BIKE 5</button>
+                          </div>
+                          <div class="col-8 map-trace">
+                            <div class="map"></div>
+                          </div>
+                          <div class="row renter-info">
+                            <div class="row">
+                              <div class="table" style="position: relative">
+                                <table
+                                  class="renter-info-table"
+                                  style="
+                                    position: relative;
+                                    margin-left: 30px;
+                                    border-radius: 12px;
+                                    border-collapse: collapse;
+                                    width: 570px;
+                                  "
+                                >
+                                  <thead>
+                                    <tr style="background-color: #6eea8e">
+                                      <th>RENTER:</th>
+                                      <th colspan="2">NATHS DIMAGIBA</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>CONTACT NUMBER</td>
+                                      <td style="text-align: center">:</td>
+                                      <td>09613002937</td>
+                                    </tr>
+                                    <tr>
+                                      <td>ADDRESS</td>
+                                      <td style="text-align: center; width: 200px">:</td>
+                                      <td>SAN JOSE</td>
+                                    </tr>
+                                    <tr>
+                                      <td>RESERVED HOURS</td>
+                                      <td style="text-align: center; width: 200px">:</td>
+                                      <td>3 hrs</td>
+                                    </tr>
+                                    <tr>
+                                      <td>DURATION OF USE</td>
+                                      <td style="text-align: center; width: 200px">:</td>
+                                      <td>72 hrs</td>
+                                    </tr>
+                                    <tr>
+                                      <td>TYPE OF BIKE</td>
+                                      <td style="text-align: center; width: 200px">:</td>
+                                      <td>ADULT BIKE</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </section>
+                <section id="BikeAvailabilityPage">
+                    <div class="bike-buttons">
+                        <button class="bikeButton">BIKE 1</button>
+                        <button class="bikeButton">BIKE 2</button>
+                        <button class="bikeButton">BIKE 3</button>
+                        <button class="bikeButton">BIKE 4</button>
+                        <button class="bikeButton">BIKE 5</button>
+                        <button class="bikeButton">BIKE 6</button>
+                        <button class="bikeButton">BIKE 7</button>
+                        <button class="bikeButton">BIKE 8</button>
+                        <button class="bikeButton">BIKE 9</button>
+                      </div>
+                </section>
                 <section id="BikeUploadPage">
                     <form class="form-container needs-validation" id="bikeUploadForm" novalidate>
                         <div class="form-title"><p>BIKE INFORMATION</p></div>
@@ -383,18 +836,150 @@
                         </div>
                     </form>
                 </section>
-                <section id="AccountsPage">this is Accounts</section>
+                <section id="AccountsPage">
+                    <div class="container-acc">
+                        <label id="title-acc" for="">ACCOUNT</label>
+                        <div id="line-divider"></div>
+                        <div id="table-acc-container">
+                          <table class="acc-table">
+                            <thead>
+                              <tr id="headers">
+                                <th>Account_ID</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Date of birth</th>
+                                <th>Contact no.</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                </section>
             </div>
         </div>
         <!-- scripts -->
         <script>
             AOS.init();
         </script>
+        <script src="../node_modules/chart.js/dist//chart.umd.js"></script>
         <script src="./assets/js/bcrypt.js"></script>
         <script src="../node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
         <script src="../node_modules//toastify-js/src/toastify.js"></script>
         <script src="./index.js"></script>
         <script src="./renderer.js"></script>
         <script src="./mongoQuery.js"></script>
+        <script src="./revchart.js"></script>
     </body>
 </html>
